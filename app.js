@@ -3,10 +3,15 @@ const express = require('express')
 const morgan = require('morgan')
 const app = express()
 const siteRouter = require('./routes/siteRoutes')
+const cors = require('cors')
 
+app.use(cors())
+
+app.options('*',cors())
 // 1) Middlewares
 app.use(express.json())
 app.use(morgan('dev'))
+
 
 app.use((req,res,next)=>{ //order of middleware matters, if we call this after route definition, it won't work on that route. because route sends res.send() which ends the cycle of middleware
     console.log(`hello from middleware 😊`);
