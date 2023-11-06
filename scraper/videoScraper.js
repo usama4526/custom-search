@@ -5,7 +5,7 @@ async function scrapeVideoUrls(url) {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   defaultViewport: null,
   ignoreHTTPSErrors: true,
-  headless: 'new',
+  headless: false,
   })
   const page = await browser.newPage()
  // await page.setViewport({ width: 1920, height: 1080 });
