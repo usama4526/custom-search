@@ -1,11 +1,11 @@
 const puppeteer = require('puppeteer-core')
-
 async function scrapeVideoUrls(url) {
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox','--single-process','--no-zygote'],
   defaultViewport: null,
   ignoreHTTPSErrors: true,
   headless: false,
+  executablePath: process.env.NODE_ENV==='development' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath()
   })
   const page = await browser.newPage()
  // await page.setViewport({ width: 1920, height: 1080 });
