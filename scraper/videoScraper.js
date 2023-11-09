@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer-core')
 async function scrapeVideoUrls(url) {
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox','--single-process','--no-zygote'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox','--single-process','--no-zygote','--remote-debugging-port=9222'],
   defaultViewport: null,
   ignoreHTTPSErrors: true,
   headless: false,
