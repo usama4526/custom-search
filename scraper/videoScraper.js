@@ -4,7 +4,7 @@ async function scrapeVideoUrls(url) {
     args: ['--no-sandbox', '--disable-setuid-sandbox','--single-process','--no-zygote'],
   defaultViewport: null,
   ignoreHTTPSErrors: true,
-  headless: false,
+  headless: true,
   executablePath:process.env.PUPPETEER_EXECUTABLE_PATH
   })
   const page = await browser.newPage()
