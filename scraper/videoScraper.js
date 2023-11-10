@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer-core')
+const puppeteer = require('puppeteer')
 async function scrapeVideoUrls(url) {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox','--single-process','--no-zygote'],
@@ -13,8 +13,10 @@ async function scrapeVideoUrls(url) {
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36');
 
   await page.goto(url)
-  const title = await page.title()
-  console.log('page title',title);
+  setTimeout(async () => {
+    
+    const title = await page.title()
+    console.log('page title',title);
   await page.screenshot({path:'example.png'})
   await page.waitForSelector('video',{timeout:0})
   //const html = await page.content()
@@ -24,11 +26,12 @@ async function scrapeVideoUrls(url) {
     return videoElements.map(source => source.getAttribute('src'));
   });
   
- console.log(videoUrls);
+  console.log(videoUrls);
   
-
+  
   await browser.close();
   return videoUrls
+}, 30000);
 }
 
 module.exports = scrapeVideoUrls;
