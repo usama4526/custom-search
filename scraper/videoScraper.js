@@ -21,6 +21,7 @@ async function scrapeVideoUrls(url) {
   //console.log(html);
   const videoUrls = await page.evaluate(() => {
     const videoElements = Array.from(document.querySelectorAll('video source'));
+    console.log(videoElements);
     return videoElements.map(source => source.getAttribute('src'));
   });
   
