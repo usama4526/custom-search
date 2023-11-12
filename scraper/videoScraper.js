@@ -13,7 +13,7 @@ async function scrapeVideoUrls(url) {
   const page = await browser.newPage()
  // await page.setViewport({ width: 1920, height: 1080 });
   await page.setJavaScriptEnabled(true);
-  //await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36');
+  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36');
 
   await page.goto(url)
     const title = await page.title()
