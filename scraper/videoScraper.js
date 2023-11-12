@@ -1,5 +1,8 @@
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-extra')
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+
 async function scrapeVideoUrls(url) {
+  puppeteer.use(StealthPlugin())
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox','--single-process','--no-zygote'],
   defaultViewport: null,
