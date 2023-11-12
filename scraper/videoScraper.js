@@ -8,7 +8,8 @@ async function scrapeVideoUrls(url) {
   defaultViewport: null,
   ignoreHTTPSErrors: true,
   headless: true,
-  executablePath:process.env.PUPPETEER_EXECUTABLE_PATH
+  executablePath:process.env.PUPPETEER_EXECUTABLE_PATH,
+  timeout:10000
   })
   const page = await browser.newPage()
  // await page.setViewport({ width: 1920, height: 1080 });
