@@ -23,15 +23,16 @@ async function scrapeVideoUrls(url) {
   const html = await page.content()
   console.log('pagehtml',html);
   const videoUrls = await page.evaluate(() => {
-    const videoElements = Array.from(document.querySelectorAll('video source'));
-    console.log('video elements',videoElements);
-    return videoElements.map(source => source.getAttribute('src'));
+    const videoElements = Array.from(document.querySelectorAll('video source, video'));
+    return videoElements.map(element => {
+      if (element.tagName === 'SOURCE') {
+        return element.getAttribute('src');
+      } else if (element.tagName === 'VIDEO') {
+        return element.getAttribute('src');
+      }
+      return null; // handle other cases if needed
+    }).filter(src => src !== null);
   });
-
-  const videoTags = await page.evaluate(()=>{
-    const videoElements = Array.from(document.querySelectorAll('video'))
-    return videoElements.map(source => source.getAttribute('src'))
-  })
   
   console.log('videoUrls',videoUrls);
   console.log('videoTags',videoTags);
