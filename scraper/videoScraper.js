@@ -18,10 +18,7 @@ async function scrapeVideoUrls(url) {
   await page.goto(url)
     const title = await page.title()
     console.log('page title',title);
-  await page.screenshot({path:'example.png'})
   await page.waitForSelector('video',{timeout:0})
-  const html = await page.content()
-  console.log('pagehtml',html);
   const videoUrls = await page.evaluate(() => {
     const videoElements = Array.from(document.querySelectorAll('video source, video'));
     return videoElements.map(element => {
@@ -35,7 +32,6 @@ async function scrapeVideoUrls(url) {
   });
   
   console.log('videoUrls',videoUrls);
-  console.log('videoTags',videoTags);
   
   
   await browser.close();
