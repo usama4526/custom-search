@@ -16,7 +16,7 @@ async function scrapeVideoUrls(url) {
   await page.setJavaScriptEnabled(true);
   //await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36');
   
-  await page.goto(url,{timeout:10000})
+  await page.goto(url,{timeout:15000})
   const title = await page.title()
   console.log('page title',title);
   //await page.screenshot({path:'example.png'})
@@ -30,7 +30,7 @@ async function scrapeVideoUrls(url) {
     }
   }
   else { //wait for video tag for all other websites
-    await page.waitForSelector('video',{timeout:10000})
+    await page.waitForSelector('video',{timeout:12000})
   }
   //const html = await page.content()
   //console.log('pagehtml',html);
