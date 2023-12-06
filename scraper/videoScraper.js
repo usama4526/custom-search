@@ -57,6 +57,9 @@ async function scrapeVideoUrls(url) {
       videoUrls = await getUrlFromImgTagWithDataVideoSource(page)
     }
   }
+  else {
+    videoUrls = await getUrlFromSourceTagWithSrc(page)
+  }
   
   await browser.close();
 
